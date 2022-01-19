@@ -14,6 +14,16 @@ public class IntList {
     return 1 + this.rest.size();
   }
 
+  public int get(int index){
+    // using recursion
+    if(index == 0){
+      return first;
+    }
+    else{
+      return this.rest.get(index-1);
+    }
+  }
+
   public static void main(String[] args) {
     //creating and adding 3 items to the intList
     IntList L = new IntList(5,null);
