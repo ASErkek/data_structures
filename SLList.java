@@ -1,4 +1,5 @@
-public class SLList<Item>{
+public class SLList<Item> implements List<Item> {
+//Privates
   private class ItemNode{
     public Item item;
     public ItemNode next;
@@ -7,27 +8,29 @@ public class SLList<Item>{
       item = _item;
       next = _next;
     }
-  }
-
+}
   private ItemNode sentinel;
   private int size;
 
+  //Constructors
+    public SLList(Item item){
+      sentinel = new ItemNode(item, null);
+      sentinel.next = new ItemNode(item, null);
+      size = 1;
+    }
   public SLList(){
     sentinel = new ItemNode(null, null);
     size = 0;
   }
 
-  public SLList(Item item){
-    sentinel = new ItemNode(item, null);
-    sentinel.next = new ItemNode(item, null);
-    size = 1;
-  }
-
+  //Methods
   public void addFirst(Item x){
     sentinel.next = new ItemNode(x, sentinel.next);
     size++;
   }
-
+  public Item getFirst(){
+    return sentinel.next.item;
+  }
   public void addLast(Item x){
     ItemNode p = sentinel;
     while(p.next != null){
@@ -36,15 +39,6 @@ public class SLList<Item>{
     p.next = new ItemNode(x, null);
     size++;
   }
-
-  public int size(){
-    return size;
-  }
-
-  public Item getFirst(){
-    return sentinel.next.item;
-  }
-
   public Item getLast(){
     ItemNode p = sentinel;
     while(p.next != null){
@@ -52,19 +46,24 @@ public class SLList<Item>{
     }
     return p.item;
   }
-
-  public static void main(String[] args) {
-    SLList<Integer> i1 = new SLList<>(5);
-    i1.addLast(4);
-    i1.addLast(3);
-    i1.addFirst(6);
-    i1.addFirst(7);
-
-
-    SLList<String> s1 = new SLList<>("C");
-    s1.addLast("D");
-    s1.addLast("E");
-    s1.addFirst("B");
-    s1.addFirst("A");
+  public void insert(Item x, int pos){
+      /*
+    ItemNode temp = new ItemNode(null, null);
+    while(pos <= 0){
+      temp.item = sentinel.next.item;
+      temp.next = sentinel.next.next;
+      pos--;
+    }
+    temp.next = new ItemNode(x, temp.next);
+*/
+  }
+  public Item get(int pos){
+      return null;
+  }
+  public int size(){
+    return size;
+  }
+  public Item removeLast(){
+      return null;
   }
 }
